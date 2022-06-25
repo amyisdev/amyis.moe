@@ -3,7 +3,5 @@ import SmolContainer from '@/components/SmolContainer.vue';
 </script>
 
 <template>
-  <SmolContainer>
-    <h1>This is an about page</h1>
-  </SmolContainer>
+  <SmolContainer> hello </SmolContainer>
 </template>
