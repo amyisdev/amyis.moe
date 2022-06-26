@@ -11,11 +11,11 @@ const props = defineProps({
 const battLevel = computed(() => props.level || 0);
 
 const battColor = computed(() => {
-  if (!props.isSupported || battLevel.value < 0.1) {
+  if (!props.isSupported || battLevel.value <= 0.1) {
     return 'bg-red-500';
   }
 
-  if (battLevel.value < 0.2) {
+  if (battLevel.value <= 0.2) {
     return 'bg-yellow-500';
   }
 

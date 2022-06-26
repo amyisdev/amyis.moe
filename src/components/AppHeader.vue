@@ -4,7 +4,7 @@ import SmolContainer from './SmolContainer.vue';
 </script>
 
 <template>
-  <header class="fixed inset-x-0 top-0 z-10 bg-gray-800 shadow-sm">
+  <header class="fixed inset-x-0 top-0 z-10 shadow-sm bg-primary-800">
     <SmolContainer>
       <div class="relative flex items-center justify-between py-4 space-x-4">
         <p class="text-2xl font-bold leading-7 text-white">Amy's Lab</p>

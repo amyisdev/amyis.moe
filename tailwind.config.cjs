@@ -11,6 +11,7 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       colors: {
+        primary: colors.cyan,
         stone: colors.stone,
       },
     },
