@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import GitIcon from '~icons/mdi/git';
 import UserIcon from '~icons/mdi/account';
 import OpenArrowIcon from '~icons/mdi/arrow-top-right';
 import JenkinsIcon from '~icons/simple-icons/jenkins';
@@ -38,16 +37,8 @@ const services: Service[] = [
     iconBackground: 'bg-green-50',
   },
   {
-    title: 'Git',
-    description: 'A lightweight git server to host my personal projects. Powered by Gitea.',
-    href: 'https://git.amyis.moe',
-    icon: GitIcon,
-    iconForeground: 'text-orange-600',
-    iconBackground: 'bg-orange-50',
-  },
-  {
     title: 'Jenkins',
-    description: 'Learning jenkins locally is kinda hard, so i deploy it into the ☁️.',
+    description: 'Learning jenkins locally is kinda hard, so i deploy it into the ☁️. (Currently inactive)',
     href: 'https://jenkins.amyis.moe',
     icon: JenkinsIcon,
     iconForeground: 'text-red-600',
@@ -55,7 +46,8 @@ const services: Service[] = [
   },
   {
     title: 'Sonarqube',
-    description: 'An installation of sonarqube to make sure my code quality & security is up to par.',
+    description:
+      'Used in jenkins pipeline to inspect the code quality and security of my projects. (Currently inactive)',
     href: 'https://sonarqube.amyis.moe',
     icon: SonarqubeIcon,
     iconForeground: 'text-cyan-600',
@@ -66,7 +58,7 @@ const services: Service[] = [
 
 <template>
   <SmolContainer>
-    <div class="rounded-lg bg-gray-200 overflow-hidden shadow divide-y divide-gray-200">
+    <div class="overflow-hidden bg-gray-200 divide-y divide-gray-200 rounded-lg shadow">
       <div
         v-for="(service, i) in services"
         :key="service.title"
@@ -80,7 +72,7 @@ const services: Service[] = [
           <span
             :class="[service.iconBackground, service.iconForeground, 'rounded-lg inline-flex p-3 ring-4 ring-white']"
           >
-            <component :is="service.icon" class="h-6 w-6" aria-hidden="true" />
+            <component :is="service.icon" class="w-6 h-6" aria-hidden="true" />
           </span>
         </div>
 
@@ -103,10 +95,10 @@ const services: Service[] = [
         </div>
 
         <span
-          class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400"
+          class="absolute text-gray-300 pointer-events-none top-6 right-6 group-hover:text-gray-400"
           aria-hidden="true"
         >
-          <OpenArrowIcon class="h-8 w-8" />
+          <OpenArrowIcon class="w-8 h-8" />
         </span>
       </div>
     </div>

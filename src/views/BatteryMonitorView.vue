@@ -55,7 +55,7 @@ watch(webhookState.value, (state) => (state.enabled ? resume() : pause()));
 
     <div v-if="battery.isSupported" class="overflow-hidden bg-white divide-y divide-gray-200 rounded-lg shadow">
       <div class="px-4 py-4 sm:px-6">
-        <div class="flex flex-wrap items-center justify-between sm:flex-nowrap">
+        <div class="flex items-center justify-between">
           <h2 class="font-medium text-gray-900">Webhook</h2>
 
           <Switch
@@ -87,6 +87,11 @@ watch(webhookState.value, (state) => (state.enabled ? resume() : pause()));
               class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </div>
+        </div>
+
+        <div class="px-1 mt-2 text-xs font-medium">
+          Every 30 seconds, this page will check whether your device needs to be charged or discharged. If it needs, a
+          POST request will be sent to the webhook URL above.
         </div>
       </div>
 
