@@ -26,7 +26,6 @@ jobs:
         pnpm install
         pnpm run build
         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        pnpm run deploy
         echo 'amyis.moe' > ./dist/CNAME
         pnpm exec gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
       env:
