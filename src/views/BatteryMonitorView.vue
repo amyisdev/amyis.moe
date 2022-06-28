@@ -10,7 +10,7 @@ import CardSection from '@/components/Card/CardSection.vue';
 import SmolContainer from '@/components/SmolContainer.vue';
 import { runBatteryWebhook } from '@/lib/batt-webhook';
 
-const INTERVAL = 30_000;
+const INTERVAL = 60_000;
 const MAX_LOG_LENGTH = 100;
 
 const battery = useBattery();
