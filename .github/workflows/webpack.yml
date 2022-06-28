@@ -1,0 +1,32 @@
+name: Build and deploy to github pages
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+        
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2.2.2
+      with:
+        version: 7.x
+
+    - name: Deploy with gh-pages
+      run: |
+        pnpm install
+        pnpm run build
+        git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+        echo 'amyis.moe' > ./dist/CNAME
+        pnpm exec gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
