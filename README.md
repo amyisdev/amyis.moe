@@ -29,6 +29,6 @@ My portfolio site made with Vue.js
 
 ## Cloning / Forking
 
-Please review the [license](https://github.com/amyisdev/amyis.moe/blob/main/LICENSE.txt) and remove all of my personal information (resume, images, etc.).
+Please review the [license](https://github.com/amyisdev/amyis.moe/blob/master/LICENSE.txt) and remove all of my personal information (resume, images, etc.).
 
 _Credits to [Lee Robinson](https://github.com/leerob/leerob.io) for this section_
