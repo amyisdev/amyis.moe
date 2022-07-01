@@ -1,46 +1,34 @@
-# my-utils
+# amyis.moe (WIP)
 
-This template should help get you started developing with Vue 3 in Vite.
+My portfolio site made with Vue.js
 
-## Recommended IDE Setup
+## Tech Stack
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+**Framework**: Vue.js
 
-## Type Support for `.vue` Imports in TS
+**Styling**: Tailwind CSS
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+**Request Client**: Axios
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+**Package Manager**: pnpm
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+**Linter**: ESLint
 
-## Customize configuration
+**Formatter**: Prettier
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+**Typing**: TypeScript
 
-## Project Setup
+## Running Locally
 
-```sh
-pnpm install
+```bash
+  git clone https://github.com/amyisdev/amyis.moe.git
+  cd amyis.moe
+  pnpm install
+  pnpm dev
 ```
 
-### Compile and Hot-Reload for Development
+## Cloning / Forking
 
-```sh
-pnpm dev
-```
+Please review the [license](https://github.com/amyisdev/amyis.moe/blob/main/LICENSE.txt) and remove all of my personal information (resume, images, etc.).
 
-### Type-Check, Compile and Minify for Production
-
-```sh
-pnpm build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-pnpm lint
-```
+_Credits to [Lee Robinson](https://github.com/leerob/leerob.io) for this section_
