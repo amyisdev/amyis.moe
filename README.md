@@ -21,10 +21,10 @@ My portfolio site made with Vue.js
 ## Running Locally
 
 ```bash
-  git clone https://github.com/amyisdev/amyis.moe.git
-  cd amyis.moe
-  pnpm install
-  pnpm dev
+git clone https://github.com/amyisdev/amyis.moe.git
+cd amyis.moe
+pnpm install
+pnpm dev
 ```
 
 ## Cloning / Forking
