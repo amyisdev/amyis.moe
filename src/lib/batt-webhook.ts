@@ -1,4 +1,4 @@
-import { get, type useBattery } from '@vueuse/core';
+import type { useBattery } from '@vueuse/core';
 import axios, { AxiosError } from 'axios';
 
 export const runBatteryWebhook = async (battery: ReturnType<typeof useBattery>, webhookUrl: string) => {
@@ -6,8 +6,8 @@ export const runBatteryWebhook = async (battery: ReturnType<typeof useBattery>, 
     return 'Not supported';
   }
 
-  const level = get(battery.level) * 100;
-  const charging = get(battery.charging);
+  const level = Math.round(battery.level.value * 100);
+  const charging = battery.charging.value;
 
   const levelString = `Battery level ${level}`;
   const chargingString = charging ? 'charging' : 'not charging';

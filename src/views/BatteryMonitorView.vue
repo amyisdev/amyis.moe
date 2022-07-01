@@ -105,8 +105,8 @@ watch(webhookState.value, (state) => (state.enabled ? resume() : pause()));
         </div>
 
         <div class="px-1 mt-2 text-xs font-medium">
-          Every 30 seconds, this page will check whether your device needs to be charged or discharged. If it needs, a
-          POST request will be sent to the webhook URL above.
+          Every {{ INTERVAL / 1000 }} seconds, this page will check whether your device needs to be charged or
+          discharged. If it needs, a POST request will be sent to the webhook URL above.
         </div>
       </CardSection>
 
