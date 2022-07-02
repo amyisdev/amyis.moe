@@ -46,7 +46,7 @@ watch(webhookState.value, (state) => (state.enabled ? resume() : pause()));
     <CardContainer>
       <CardSection>
         <div class="flex items-center justify-between">
-          <h1 class="text-lg font-medium leading-6 text-gray-900">Battery Monitor</h1>
+          <h1 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">Battery Monitor</h1>
 
           <div
             v-if="!battery.isSupported"
@@ -71,13 +71,13 @@ watch(webhookState.value, (state) => (state.enabled ? resume() : pause()));
     <CardContainer v-if="battery.isSupported">
       <div class="px-4 py-4 sm:px-6">
         <div class="flex items-center justify-between">
-          <h2 class="font-medium text-gray-900">Webhook</h2>
+          <h2 class="font-medium text-gray-900 dark:text-gray-100">Webhook</h2>
 
           <Switch
             v-model="webhookState.enabled"
             :class="[
-              webhookState.enabled ? 'bg-primary-600' : 'bg-gray-200',
-              'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500',
+              webhookState.enabled ? 'bg-primary-600' : 'bg-gray-200 dark:bg-gray-700',
+              'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 dark:focus:ring-offset-gray-800',
             ]"
           >
             <span class="sr-only">enable/disable webhook</span>
@@ -92,19 +92,19 @@ watch(webhookState.value, (state) => (state.enabled ? resume() : pause()));
 
       <CardSection v-if="webhookState.enabled">
         <div>
-          <label for="webook_url" class="block text-sm font-medium text-gray-700">Webhook URL</label>
+          <label for="webook_url" class="block text-sm font-medium text-gray-700 dark:text-gray-200">Webhook URL</label>
           <div class="mt-1">
             <input
               id="webook_url"
               type="text"
               placeholder="https://example.test/api/webhook"
               v-model="webhookState.url"
-              class="block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+              class="block w-full border-gray-300 rounded-md shadow-sm dark:border-gray-600 dark:text-white dark:bg-gray-700 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
             />
           </div>
         </div>
 
-        <div class="px-1 mt-2 text-xs font-medium">
+        <div class="px-1 mt-2 text-xs font-medium dark:text-gray-100">
           Every {{ INTERVAL / 1000 }} seconds, this page will check whether your device needs to be charged or
           discharged. If it needs, a POST request will be sent to the webhook URL above.
         </div>
@@ -112,14 +112,16 @@ watch(webhookState.value, (state) => (state.enabled ? resume() : pause()));
 
       <CardSection v-if="webhookState.enabled">
         <div class="flex items-center justify-between">
-          <h3 class="text-sm font-medium text-gray-700">Webhook logs</h3>
+          <h3 class="text-sm font-medium text-gray-700 dark:text-gray-200">Webhook logs</h3>
 
-          <button class="text-sm text-gray-500 hover:text-gray-700" @click="clearLogs">Clear</button>
+          <button class="text-sm text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" @click="clearLogs">
+            Clear
+          </button>
         </div>
 
         <div
           ref="logWindow"
-          class="w-full h-64 px-3 py-2 mt-1 overflow-auto font-mono text-sm bg-gray-100 rounded-md whitespace-nowrap"
+          class="w-full h-64 px-3 py-2 mt-1 overflow-auto font-mono text-sm bg-gray-100 rounded-md dark:bg-gray-700 dark:text-gray-300 whitespace-nowrap"
         >
           <div v-if="webhookLogs.length === 0">No Activity</div>
           <div v-for="log in webhookLogs" :key="log.date">[{{ log.date }}] {{ log.text }}</div>
