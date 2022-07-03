@@ -11,6 +11,7 @@ specifiers:
   '@tailwindcss/forms': ^0.5.2
   '@tailwindcss/line-clamp': ^0.4.0
   '@tailwindcss/typography': ^0.5.2
+  '@types/marked': ^4.0.3
   '@types/node': ^16.11.41
   '@vitejs/plugin-vue': ^2.3.3
   '@vue/compiler-sfc': ^3.2.37
@@ -25,6 +26,7 @@ specifiers:
   gh-pages: ^4.0.0
   husky: ^8.0.1
   lint-staged: ^13.0.3
+  marked: ^4.0.17
   npm-run-all: ^4.1.5
   pinia: ^2.0.14
   postcss: ^8.4.14
@@ -41,6 +43,7 @@ dependencies:
   '@headlessui/vue': 1.6.5_vue@3.2.37
   '@vueuse/core': 8.7.5_vue@3.2.37
   axios: 0.27.2
+  marked: 4.0.17
   pinia: 2.0.14_j6bzmzd4ujpabbp5objtwxyjp4
   vue: 3.2.37
   vue-router: 4.0.16_vue@3.2.37
@@ -55,6 +58,7 @@ devDependencies:
   '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.4
   '@tailwindcss/line-clamp': 0.4.0_tailwindcss@3.1.4
   '@tailwindcss/typography': 0.5.2_tailwindcss@3.1.4
+  '@types/marked': 4.0.3
   '@types/node': 16.11.41
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.12+vue@3.2.37
   '@vue/compiler-sfc': 3.2.37
@@ -455,6 +459,10 @@ packages:
 
   /@types/json-schema/7.0.11:
     resolution: {integrity: sha512-wOuvG1SN4Us4rez+tylwwwCV1psiNVOkJeM3AUWUNWg/jDQY2+HE/444y5gc+jBmRqASOm2Oeh5c1axHobwRKQ==}
+    dev: true
+
+  /@types/marked/4.0.3:
+    resolution: {integrity: sha512-HnMWQkLJEf/PnxZIfbm0yGJRRZYYMhb++O9M36UCTA9z53uPvVoSlAwJr3XOpDEryb7Hwl1qAx/MV6YIW1RXxg==}
     dev: true
 
   /@types/minimist/1.2.2:
@@ -2621,6 +2629,12 @@ packages:
     resolution: {integrity: sha512-hdN1wVrZbb29eBGiGjJbeP8JbKjq1urkHJ/LIP/NY48MZ1QVXUsQBV1G1zvYFHn1XE06cwjBsOI2K3Ulnj1YXQ==}
     engines: {node: '>=8'}
     dev: true
+
+  /marked/4.0.17:
+    resolution: {integrity: sha512-Wfk0ATOK5iPxM4ptrORkFemqroz0ZDxp5MWfYA7H/F+wO17NRWV5Ypxi6p3g2Xmw2bKeiYOl6oVnLHKxBA0VhA==}
+    engines: {node: '>= 12'}
+    hasBin: true
+    dev: false
 
   /memorystream/0.3.1:
     resolution: {integrity: sha512-S3UwM3yj5mtUSEfP41UZmt/0SCoVYUcU1rkXv+BQ5Ig8ndL4sPoJNBUJERafdPb5jjHJGuMgytgKvKIf58XNBw==}

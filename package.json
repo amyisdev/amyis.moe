@@ -14,6 +14,7 @@
     "@headlessui/vue": "^1.6.5",
     "@vueuse/core": "^8.7.5",
     "axios": "^0.27.2",
+    "marked": "^4.0.17",
     "pinia": "^2.0.14",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"
@@ -28,6 +29,7 @@
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
+    "@types/marked": "^4.0.3",
     "@types/node": "^16.11.41",
     "@vitejs/plugin-vue": "^2.3.3",
     "@vue/compiler-sfc": "^3.2.37",

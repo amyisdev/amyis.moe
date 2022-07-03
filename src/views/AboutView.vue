@@ -3,33 +3,7 @@ import CardContainer from '@/components/Card/CardContainer.vue';
 import CardSection from '@/components/Card/CardSection.vue';
 import SkillBadge from '@/components/SkillBadge.vue';
 import SmolContainer from '@/components/SmolContainer.vue';
-
-import GithubIcon from '~icons/mdi/github';
-import LinkedinIcon from '~icons/mdi/linkedin';
-import TwitterIcon from '~icons/mdi/twitter';
-
-const skills = [
-  {
-    title: 'Programming Languages',
-    items: ['PHP', 'Javascript', 'Typescript', 'SQL'],
-  },
-  {
-    title: 'Frameworks',
-    items: ['Laravel', 'Vue.js', 'React', 'Express'],
-  },
-  {
-    title: 'Databases',
-    items: ['MongoDB', 'MySQL', 'PostgreSQL'],
-  },
-  {
-    title: 'Tools',
-    items: ['Docker', 'Jenkins', 'Git', 'Vault'],
-  },
-  {
-    title: 'Cloud Services',
-    items: ['Amazon Web Services', 'Github', 'Gitlab', 'OneSignal'],
-  },
-];
+import { name, title, bio, socials, skills, workExperiences } from '@/data/resume';
 </script>
 
 <template>
@@ -49,42 +23,22 @@ const skills = [
           <div class="sm:col-span-2">
             <div class="space-y-4">
               <div class="space-y-1 text-lg font-medium leading-6">
-                <h3 class="dark:text-white">Azmi Makarima Y</h3>
-
-                <p class="text-primary-600 dark:text-primary-500">Devops Engineer</p>
-
+                <h3 class="dark:text-white">{{ name }}</h3>
+                <p class="text-primary-600 dark:text-primary-500">{{ title }}</p>
                 <div class="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
                   <a
-                    href="https://linkedin.com/in/amyazmim"
+                    v-for="social in socials"
+                    :key="social.href"
+                    :href="social.href"
                     target="_blank"
-                    class="hover:text-[#0072b1] dark:hover:text-white dark:hover:opacity-90"
+                    :class="social.className"
                   >
-                    <LinkedinIcon class="w-6 h-6" />
-                  </a>
-                  <a
-                    href="https://twitter.com/bfwithamy"
-                    target="_blank"
-                    class="hover:text-[#00acee] dark:hover:text-[#d6d9db]"
-                  >
-                    <TwitterIcon class="w-6 h-6" />
-                  </a>
-                  <a
-                    href="https://github.com/amyisme13"
-                    target="_blank"
-                    class="hover:text-[#171515] dark:hover:text-[#f0f6fc]"
-                  >
-                    <GithubIcon class="w-6 h-6" />
+                    <component :is="social.icon" class="w-6 h-6" />
                   </a>
                 </div>
               </div>
 
-              <div>
-                <p class="text-gray-500 dark:text-gray-400">
-                  More than 2 years of experience in software development. Currently enhancing my knowledge in devops
-                  while also working at <span class="font-semibold">PT Telkom Indonesia Tbk</span>. Formerly worked as
-                  web developer, cloud administrator and system analyst.
-                </p>
-              </div>
+              <div v-html="bio" class="text-gray-500 dark:text-gray-400"></div>
             </div>
           </div>
         </div>
@@ -113,58 +67,21 @@ const skills = [
         <h2 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">Work Experience</h2>
       </CardSection>
 
-      <CardSection>
-        <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">PT Telkom Indonesia Tbk</h3>
+      <CardSection class="space-y-8">
+        <div v-for="(experience, i) in workExperiences" :key="i">
+          <h3 class="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">{{ experience.company }}</h3>
 
-        <div class="mt-2 sm:flex sm:items-center sm:justify-between">
-          <h4 class="font-semibold text-gray-700 dark:text-gray-400">DevOps Engineer</h4>
-          <div class="text-sm text-gray-500">Jun 2022 - Present</div>
+          <div v-for="(position, j) in experience.positions" :key="j" :class="[j === 0 ? 'mt-2' : 'mt-4']">
+            <div class="sm:flex sm:items-center sm:justify-between">
+              <h4 class="font-semibold text-gray-700 dark:text-gray-400">{{ position.name }}</h4>
+              <div class="text-sm text-gray-500">{{ position.duration }}</div>
+            </div>
+
+            <ul class="mt-1 ml-4 text-base text-gray-700 list-disc dark:text-gray-400">
+              <li v-for="(item, k) in position.description" :key="k">{{ item }}</li>
+            </ul>
+          </div>
         </div>
-
-        <ul class="mt-1 ml-4 text-base text-gray-700 list-disc dark:text-gray-400">
-          <li>Maintain Playcourt gitops.</li>
-        </ul>
-
-        <h3 class="mt-8 text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
-          PT Centrinova Solusi Edukasi
-        </h3>
-
-        <div class="mt-2 sm:flex sm:items-center sm:justify-between">
-          <h4 class="font-semibold text-gray-700 dark:text-gray-400">System Analyst</h4>
-          <div class="text-sm text-gray-500">Jul 2021 - May 2022</div>
-        </div>
-
-        <ul class="mt-1 ml-4 text-base text-gray-700 list-disc dark:text-gray-400">
-          <li>Meet and coordinate with stakeholders to gather requirements.</li>
-          <li>Analyze, design and document it into a software specification document for developers to follow.</li>
-          <li>Create test scenarios for internal test and user acceptance test.</li>
-          <li>Perform and monitor each task in the waterfall SDLC model.</li>
-        </ul>
-
-        <div class="mt-4 sm:flex sm:items-center sm:justify-between">
-          <h4 class="font-semibold text-gray-700 dark:text-gray-400">Cloud Administrator</h4>
-          <div class="text-sm text-gray-500">Nov 2019 - May 2022</div>
-        </div>
-
-        <ul class="mt-1 ml-4 text-base text-gray-700 list-disc dark:text-gray-400">
-          <li>Maintain infrastructures in Amazon Web Services. This includes EC2, RDS, S3, SES, SNS and ALB.</li>
-          <li>Configure server auto scaling to handle spike load in AWS EC2.</li>
-          <li>Manage various 3rd party service accounts to be used by system developers.</li>
-          <li>Deploy applications developed by system developers into AWS.</li>
-        </ul>
-
-        <div class="mt-4 sm:flex sm:items-center sm:justify-between">
-          <h4 class="font-semibold text-gray-700 dark:text-gray-400">System Developer</h4>
-          <div class="text-sm text-gray-500">Sep 2019 - Oct 2021</div>
-        </div>
-
-        <ul class="mt-1 ml-4 text-base text-gray-700 list-disc dark:text-gray-400">
-          <li>
-            Developed multiple web applications for clients using Laravel and Vue.js based on design documents created
-            by analysts.
-          </li>
-          <li>Developed a learning management system on top of Moodle.</li>
-        </ul>
       </CardSection>
     </CardContainer>
   </SmolContainer>
