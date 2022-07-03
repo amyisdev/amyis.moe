@@ -1,11 +1,10 @@
 <script setup lang="ts">
+import SmolContainer from './SmolContainer.vue';
 import MoonIcon from '~icons/mdi/weather-night';
 import SunIcon from '~icons/mdi/weather-sunny';
-import { useDark, useToggle } from '@vueuse/core';
-import SmolContainer from './SmolContainer.vue';
 
-const dark = useDark();
-const toggleDark = useToggle(dark);
+const colorMode = useColorMode();
+const toggleColor = () => (colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark');
 </script>
 
 <template>
@@ -14,8 +13,8 @@ const toggleDark = useToggle(dark);
       <div class="relative flex items-center justify-between py-4 space-x-4">
         <p class="text-2xl font-bold leading-7 text-white">Amy's Lab</p>
 
-        <button class="rounded-md focus:outline-none focus:ring-2 focus:ring-primary-600" @click="toggleDark()">
-          <SunIcon v-if="dark" class="w-6 h-6 text-white" />
+        <button class="rounded-md focus:outline-none focus:ring-2 focus:ring-primary-600" @click="toggleColor()">
+          <SunIcon v-if="colorMode.value === 'dark'" class="w-6 h-6 text-white" />
           <MoonIcon v-else class="w-6 h-6 text-white" />
         </button>
       </div>
