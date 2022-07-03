@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import LightningIcon from '~icons/mdi/lightning-bolt';
-import { computed } from 'vue';
 
 const props = defineProps({
   isSupported: Boolean,
-  level: Number,
   charging: Boolean,
+  level: {
+    type: Number,
+    default: 0,
+  },
 });
 
 const battLevel = computed(() => props.level || 0);

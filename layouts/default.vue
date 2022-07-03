@@ -1,9 +1,5 @@
 <script setup lang="ts">
 import BackIcon from '~icons/mdi/arrow-left';
-import { useRoute } from 'vue-router';
-
-import AppHeader from '@/components/AppHeader.vue';
-import SmolContainer from '@/components/SmolContainer.vue';
 
 const route = useRoute();
 </script>
@@ -13,16 +9,16 @@ const route = useRoute();
     <AppHeader />
 
     <SmolContainer v-if="route.path !== '/'" class="mb-4 -mt-2">
-      <router-link
+      <NuxtLink
         to="/"
         class="flex items-center text-base font-medium text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
       >
         <BackIcon class="flex-shrink-0 w-5 h-5 mr-1" />
 
         Back to home
-      </router-link>
+      </NuxtLink>
     </SmolContainer>
 
-    <router-view />
+    <slot></slot>
   </div>
 </template>

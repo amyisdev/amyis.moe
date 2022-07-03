@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import CardContainer from '@/components/Card/CardContainer.vue';
-import CardSection from '@/components/Card/CardSection.vue';
-import SkillBadge from '@/components/SkillBadge.vue';
-import SmolContainer from '@/components/SmolContainer.vue';
 import { name, title, bio, socials, skills, workExperiences } from '@/data/resume';
 </script>
 
@@ -38,7 +34,8 @@ import { name, title, bio, socials, skills, workExperiences } from '@/data/resum
                 </div>
               </div>
 
-              <div v-html="bio" class="text-gray-500 dark:text-gray-400"></div>
+              <!-- eslint-disable-next-line vue/no-v-html -->
+              <div class="text-gray-500 dark:text-gray-400" v-html="bio"></div>
             </div>
           </div>
         </div>
