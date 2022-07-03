@@ -1,10 +1,10 @@
 # amyis.moe (WIP)
 
-My portfolio site made with Vue.js
+My portfolio site made with Nuxt 3
 
 ## Tech Stack
 
-**Framework**: Vue.js
+**Framework**: Nuxt 3
 
 **Styling**: Tailwind CSS
 
@@ -23,7 +23,7 @@ My portfolio site made with Vue.js
 ```bash
 git clone https://github.com/amyisdev/amyis.moe.git
 cd amyis.moe
-pnpm install
+pnpm i --shamefully-hoist
 pnpm dev
 ```
 
