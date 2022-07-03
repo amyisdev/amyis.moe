@@ -8,7 +8,7 @@ My portfolio site made with Nuxt 3
 
 **Styling**: Tailwind CSS
 
-**Request Client**: Axios
+**Request Client**: Fetch
 
 **Package Manager**: pnpm
 
@@ -30,7 +30,6 @@ pnpm dev
 ## Cloning / Forking
 
 Please review the [license](https://github.com/amyisdev/amyis.moe/blob/master/LICENSE.txt) and remove all of my personal information (resume, images, etc.).
-
 
 ## Special Thanks
 
