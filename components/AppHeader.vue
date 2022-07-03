@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import SmolContainer from './SmolContainer.vue';
 import MoonIcon from '~icons/mdi/weather-night';
 import SunIcon from '~icons/mdi/weather-sunny';
 
