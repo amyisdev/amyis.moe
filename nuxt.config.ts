@@ -38,6 +38,10 @@ export default defineNuxtConfig({
 
   css: ['~/assets/index.css'],
 
+  nitro: {
+    preset: 'vercel',
+  },
+
   ssr: false,
 
   typescript: {
