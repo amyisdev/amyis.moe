@@ -38,6 +38,8 @@ export default defineNuxtConfig({
 
   css: ['~/assets/index.css'],
 
+  ssr: false,
+
   typescript: {
     shim: false,
     strict: true,
