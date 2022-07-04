@@ -1,7 +1,7 @@
 import { getTopTracks } from '~~/lib/spotify';
 
 export default defineEventHandler(async (event) => {
-  event.res.setHeader('Cache-Control', 'max-age=60, stale-while-revalidate=10');
+  event.res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=43200');
 
   const res = await getTopTracks();
 
