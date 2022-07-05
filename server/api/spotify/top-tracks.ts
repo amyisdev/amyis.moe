@@ -1,4 +1,5 @@
 import { getTopTracks } from '~~/lib/spotify';
+import { TopTracksResponse } from '~~/types/spotify';
 
 export default defineEventHandler(async (event) => {
   event.res.setHeader('Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=43200');
@@ -14,5 +15,5 @@ export default defineEventHandler(async (event) => {
         external_urls: external_urls.spotify,
       })),
     })),
-  };
+  } as TopTracksResponse;
 });

@@ -13,6 +13,7 @@ module.exports = {
       colors: {
         primary: colors.cyan,
         stone: colors.stone,
+        emerald: colors.emerald,
       },
     },
   },

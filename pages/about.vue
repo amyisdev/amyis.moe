@@ -27,6 +27,7 @@ import { name, title, bio, socials, skills, workExperiences } from '@/data/resum
                     :key="social.href"
                     :href="social.href"
                     target="_blank"
+                    rel="noopener noreferrer"
                     :class="social.className"
                   >
                     <component :is="social.icon" class="w-6 h-6" />

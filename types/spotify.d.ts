@@ -57,3 +57,32 @@ export interface Image {
   url: string;
   width: number;
 }
+
+/**
+ * Response Data
+ */
+
+export interface NowPlayingResponse {
+  isPlaying: boolean;
+  from: string;
+  fromUrl: string;
+  name: string;
+  url: string;
+  artists: Array<{
+    name: string;
+    external_urls: string;
+  }>;
+  smallImage?: string;
+  bigImage?: string;
+}
+
+export interface TopTracksResponse {
+  items: Array<{
+    name: string;
+    url: string;
+    artists: Array<{
+      name: string;
+      external_urls: string;
+    }>;
+  }>;
+}
