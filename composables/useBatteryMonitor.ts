@@ -31,12 +31,12 @@ const runBatteryWebhook = async (battery: ReturnType<typeof useBattery>, webhook
 
   const webhookString = [levelString, conditionString, chargingString, `webhook sent to ${webhookUrl}`].join(', ');
 
-  const { error } = await useFetch(webhookUrl, { method: 'POST' });
-  if (error.value) {
+  try {
+    await $fetch(webhookUrl, { method: 'POST' });
+    return webhookString;
+  } catch (err) {
     return [webhookString, 'ERROR'].join(', ');
   }
-
-  return webhookString;
 };
 
 interface BatteryMonitorOptions {
