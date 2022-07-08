@@ -43,7 +43,7 @@ export const skills = [
   },
   {
     title: 'Tools',
-    items: ['Docker', 'Jenkins', 'Git', 'Vault'],
+    items: ['Docker', 'Jenkins', 'Git', 'Vault', 'Postman'],
   },
   {
     title: 'Cloud Services',
