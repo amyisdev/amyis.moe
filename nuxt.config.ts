@@ -42,6 +42,12 @@ export default defineNuxtConfig({
     preset: 'vercel',
   },
 
+  runtimeConfig: {
+    public: {
+      gtagId: '',
+    },
+  },
+
   ssr: false,
 
   typescript: {
