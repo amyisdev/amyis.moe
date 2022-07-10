@@ -33,7 +33,7 @@ const { battery, state, logs, options, clearLogs } = useBatteryMonitor();
     </CardContainer>
 
     <CardContainer v-if="battery.isSupported">
-      <div class="px-4 py-4 sm:px-6">
+      <CardSection>
         <div class="flex items-center justify-between">
           <h2 class="font-medium text-gray-900 dark:text-gray-100">Webhook</h2>
 
@@ -52,7 +52,7 @@ const { battery, state, logs, options, clearLogs } = useBatteryMonitor();
             ></span>
           </Switch>
         </div>
-      </div>
+      </CardSection>
 
       <CardSection v-if="state.enabled">
         <div>
