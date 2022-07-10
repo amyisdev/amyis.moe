@@ -2,7 +2,8 @@
 import { Switch } from '@headlessui/vue';
 import AlertIcon from '~icons/mdi/alert-outline';
 
-const { battery, state, logs, options, clearLogs } = useBatteryMonitor();
+const logWindow = ref<HTMLDivElement>();
+const { battery, state, logs, options, clearLogs } = useBatteryMonitor({ logWindow });
 </script>
 
 <template>
