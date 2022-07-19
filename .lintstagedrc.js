@@ -1,4 +1,8 @@
-/* eslint-env node */
+const path = require('path')
+
 module.exports = {
-  '*.{js,jsx,ts,tsx,vue}': 'eslint --cache --fix --ignore-path .gitignore',
-};
+  '*.{js,jsx,ts,tsx}': (filenames) => [
+    `next lint --fix --file ${filenames.map((f) => path.relative(process.cwd(), f)).join(' --file ')}`,
+    `prettier --write ${filenames.join(' ')}`,
+  ],
+}
