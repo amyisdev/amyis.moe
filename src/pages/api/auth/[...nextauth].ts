@@ -1,10 +1,9 @@
-import NextAuth, { type NextAuthOptions } from 'next-auth'
-import DiscordProvider from 'next-auth/providers/discord'
-
+import { prisma } from '@/server/db/client'
+import { env } from '@/server/env.mjs'
 // Prisma adapter for NextAuth, optional and can be removed
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
-import { prisma } from '../../../server/db/client'
-import { env } from '../../../server/env.mjs'
+import NextAuth, { type NextAuthOptions } from 'next-auth'
+import DiscordProvider from 'next-auth/providers/discord'
 
 export const authOptions: NextAuthOptions = {
   // Include user.id on session
