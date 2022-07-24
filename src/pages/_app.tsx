@@ -1,15 +1,21 @@
 // src/pages/_app.tsx
 import '../styles/globals.css'
+import { Layout } from '@/components/Layout'
 import type { AppRouter } from '@/server/router'
 import { withTRPC } from '@trpc/next'
 import { SessionProvider } from 'next-auth/react'
+import { ThemeProvider } from 'next-themes'
 import type { AppType } from 'next/dist/shared/lib/utils'
 import superjson from 'superjson'
 
 const MyApp: AppType = ({ Component, pageProps: { session, ...pageProps } }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <ThemeProvider attribute="class">
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
     </SessionProvider>
   )
 }
