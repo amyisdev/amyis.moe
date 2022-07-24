@@ -76,12 +76,12 @@ const Home: NextPage = () => {
               className={clsx([
                 i === 0 ? 'rounded-tl-lg rounded-tr-lg ' : '',
                 i === services.length - 1 ? 'rounded-bl-lg rounded-br-lg' : '',
-                'relative group  p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-500',
+                'group relative  p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-500',
               ])}
             >
               <div>
-                <span className={clsx(['inline-flex p-3 rounded-lg', service.iconBackground, service.iconForeground])}>
-                  <service.icon className="w-6 h-6" aria-hidden="true" />
+                <span className={clsx(['inline-flex rounded-lg p-3', service.iconBackground, service.iconForeground])}>
+                  <service.icon className="h-6 w-6" aria-hidden="true" />
                 </span>
               </div>
 
@@ -99,10 +99,10 @@ const Home: NextPage = () => {
               </div>
 
               <span
-                className="absolute text-gray-300 pointer-events-none top-6 right-6 group-hover:text-gray-400 dark:text-gray-500"
+                className="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-gray-400 dark:text-gray-500"
                 aria-hidden="true"
               >
-                <OpenArrowIcon className="w-8 h-8" />
+                <OpenArrowIcon className="h-8 w-8" />
               </span>
             </div>
           ))}

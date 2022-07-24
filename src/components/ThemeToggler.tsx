@@ -14,7 +14,7 @@ const ThemeToggler = () => {
 
   return (
     <button className="rounded-md focus:outline-none focus:ring-2 focus:ring-primary-600" onClick={toggleTheme}>
-      {theme === 'dark' ? <SunIcon className="w-6 h-6 text-white" /> : <MoonIcon className="w-6 h-6 text-white" />}
+      {theme === 'dark' ? <SunIcon className="h-6 w-6 text-white" /> : <MoonIcon className="h-6 w-6 text-white" />}
     </button>
   )
 }

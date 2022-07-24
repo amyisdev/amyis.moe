@@ -6,7 +6,7 @@ type HasChildrenProps = {
 
 export const CardContainer = ({ children }: HasChildrenProps) => {
   return (
-    <div className="overflow-hidden bg-white divide-y divide-gray-200 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-700">
+    <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow dark:divide-gray-700 dark:bg-gray-800">
       {children}
     </div>
   )
