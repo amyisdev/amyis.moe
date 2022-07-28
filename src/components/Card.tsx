@@ -1,17 +1,23 @@
-import { ReactNode } from 'react'
+import clsx from 'clsx'
+import { HTMLProps, ReactNode } from 'react'
 
-type HasChildrenProps = {
+type Props = HTMLProps<HTMLDivElement> & {
   children: ReactNode
 }
 
-export const CardContainer = ({ children }: HasChildrenProps) => {
+export const CardContainer = ({ className, children }: Props) => {
   return (
-    <div className="divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow dark:divide-gray-700 dark:bg-gray-800">
+    <div
+      className={clsx([
+        'divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow dark:divide-gray-700 dark:bg-gray-800',
+        className,
+      ])}
+    >
       {children}
     </div>
   )
 }
 
-export const CardSection = ({ children }: HasChildrenProps) => {
-  return <div className="px-4 py-5 sm:px-6">{children}</div>
+export const CardSection = ({ className, children }: Props) => {
+  return <div className={clsx(['px-4 py-5 sm:px-6', className])}>{children}</div>
 }

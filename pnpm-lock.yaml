@@ -6,6 +6,8 @@ specifiers:
   '@heroicons/react': ^1.0.6
   '@next-auth/prisma-adapter': ^1.0.3
   '@prisma/client': ^4.0.0
+  '@tailwindcss/aspect-ratio': ^0.4.0
+  '@tailwindcss/forms': ^0.5.2
   '@trivago/prettier-plugin-sort-imports': ^3.3.0
   '@trpc/client': ^9.26.2
   '@trpc/next': ^9.26.2
@@ -63,6 +65,8 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.0.3
   '@commitlint/config-conventional': 17.0.3
+  '@tailwindcss/aspect-ratio': 0.4.0_tailwindcss@3.1.6
+  '@tailwindcss/forms': 0.5.2_tailwindcss@3.1.6
   '@trivago/prettier-plugin-sort-imports': 3.3.0_prettier@2.7.1
   '@types/node': 18.0.0
   '@types/react': 18.0.14
@@ -774,6 +778,23 @@ packages:
     dependencies:
       tslib: 2.4.0
     dev: false
+
+  /@tailwindcss/aspect-ratio/0.4.0_tailwindcss@3.1.6:
+    resolution: {integrity: sha512-WJu0I4PpqNPuutpaA9zDUq2JXR+lorZ7PbLcKNLmb6GL9/HLfC7w3CRsMhJF4BbYd/lkY6CfXOvkYpuGnZfkpQ==}
+    peerDependencies:
+      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
+    dependencies:
+      tailwindcss: 3.1.6
+    dev: true
+
+  /@tailwindcss/forms/0.5.2_tailwindcss@3.1.6:
+    resolution: {integrity: sha512-pSrFeJB6Bg1Mrg9CdQW3+hqZXAKsBrSG9MAfFLKy1pVA4Mb4W7C0k7mEhlmS2Dfo/otxrQOET7NJiJ9RrS563w==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || >= 3.0.0-alpha.1'
+    dependencies:
+      mini-svg-data-uri: 1.4.4
+      tailwindcss: 3.1.6
+    dev: true
 
   /@trivago/prettier-plugin-sort-imports/3.3.0_prettier@2.7.1:
     resolution: {integrity: sha512-1y44bVZuIN0RsS3oIiGd5k8Vm3IZXYZnp4VsP2Z/S5L9WAOw43HE2clso66M2S/dDeJ+8sKPqnHsEfh39Vjs3w==}
@@ -2926,6 +2947,11 @@ packages:
   /min-indent/1.0.1:
     resolution: {integrity: sha512-I9jwMn07Sy/IwOj3zVkVik2JTvgpaykDZEigL6Rx6N9LbMywwUSMtxET+7lVoDLLd3O3IXwJwvuuns8UB/HeAg==}
     engines: {node: '>=4'}
+    dev: true
+
+  /mini-svg-data-uri/1.4.4:
+    resolution: {integrity: sha512-r9deDe9p5FJUPZAk3A59wGH7Ii9YrjjWw0jmw/liSbHl2CHiyXj6FcDXDu2K3TjVAXqiJdaw3xxwlZZr9E6nHg==}
+    hasBin: true
     dev: true
 
   /minimatch/3.1.2:

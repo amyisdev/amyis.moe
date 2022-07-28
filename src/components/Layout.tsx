@@ -1,14 +1,16 @@
 import { ArrowLeftIcon } from '@heroicons/react/solid'
+import clsx from 'clsx'
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { ReactNode } from 'react'
+import { HTMLProps, ReactNode } from 'react'
 
-type HasChildrenProps = {
+type Props = HTMLProps<HTMLDivElement> & {
   children: ReactNode
 }
 
-export const SmolContainer = ({ children }: HasChildrenProps) => {
-  return <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">{children}</div>
+export const SmolContainer = ({ children, className }: Props) => {
+  return <div className={clsx(['mx-auto max-w-3xl px-4 sm:px-6 lg:px-8', className])}>{children}</div>
 }
 
 const ThemeToggler = dynamic(() => import('./ThemeToggler'), { ssr: false })
@@ -27,19 +29,21 @@ const Header = () => {
   )
 }
 
-export const Layout = ({ children }: HasChildrenProps) => {
+export const Layout = ({ children, className }: Props) => {
   const router = useRouter()
 
   return (
-    <div className="min-h-screen bg-gray-100 pt-24 pb-8 dark:bg-gray-900">
+    <div className={clsx(['min-h-screen bg-gray-100 pt-24 pb-8 dark:bg-gray-900', className])}>
       <Header />
 
-      <SmolContainer>
+      <SmolContainer className="mb-4 -mt-2">
         {router.pathname !== '/' && (
-          <button className="flex items-center text-base font-medium text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
-            <ArrowLeftIcon className="mr-1 h-5 w-5 flex-shrink-0" />
-            Back to home
-          </button>
+          <Link href="/">
+            <a className="flex items-center text-base font-medium text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+              <ArrowLeftIcon className="mr-1 h-5 w-5 flex-shrink-0" />
+              Back to home
+            </a>
+          </Link>
         )}
       </SmolContainer>
 
