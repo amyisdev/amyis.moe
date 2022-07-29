@@ -2,7 +2,6 @@ import { CardContainer } from '@/components/Card'
 import { SmolContainer } from '@/components/Layout'
 import clsx from 'clsx'
 import type { NextPage } from 'next'
-import Head from 'next/head'
 import Link from 'next/link'
 import { SVGProps } from 'react'
 import { HiUser } from 'react-icons/hi'
@@ -63,11 +62,6 @@ const services = [
 const Home: NextPage = () => {
   return (
     <>
-      <Head>
-        <title>Amy{"'"}s Lab</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <SmolContainer>
         <CardContainer>
           {services.map((service, i) => (

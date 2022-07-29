@@ -13,7 +13,7 @@ export const SmolContainer = ({ children, className }: Props) => {
   return <div className={clsx(['mx-auto max-w-3xl px-4 sm:px-6 lg:px-8', className])}>{children}</div>
 }
 
-const ThemeToggler = dynamic(() => import('./ThemeToggler'), { ssr: false })
+const ThemeToggler = dynamic(() => import('./client/ThemeToggler'), { ssr: false })
 
 const Header = () => {
   return (
