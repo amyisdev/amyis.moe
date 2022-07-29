@@ -32,8 +32,6 @@ export const getNowPlaying = async () => {
     },
   })
 
-  console.log(response)
-
   return response
 }
 
