@@ -1,5 +1,4 @@
 import { $fetch } from 'ohmyfetch'
-import { useEffect, useState } from 'react'
 import { useBattery, useInterval, useLocalStorage } from 'react-use'
 
 const runBatteryWebhook = async (battery: ReturnType<typeof useBattery>, webhookUrl: string) => {
