@@ -6,22 +6,7 @@ import Link from 'next/link'
 import { SVGProps } from 'react'
 import { HiUser } from 'react-icons/hi'
 import { MdBatteryStd } from 'react-icons/md'
-import { SiSpotify, SiJenkins } from 'react-icons/si'
-
-const OpenArrowIcon = (props: SVGProps<SVGSVGElement>) => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlnsXlink="http://www.w3.org/1999/xlink"
-      width="1em"
-      height="1em"
-      viewBox="0 0 24 24"
-      {...props}
-    >
-      <path fill="currentColor" d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19L5 17.59Z"></path>
-    </svg>
-  )
-}
+import { SiSpotify } from 'react-icons/si'
 
 const services = [
   {
@@ -42,22 +27,28 @@ const services = [
   },
   {
     title: 'Battery Monitor',
-    description:
-      'Display the device battery level and charging information. Will also send webhook on certain conditions.',
+    description: 'Display the device battery level and charging information.',
     href: '/battery',
     icon: MdBatteryStd,
     iconForeground: 'text-emerald-600 dark:text-emerald-100',
     iconBackground: 'bg-emerald-50 dark:bg-emerald-700',
   },
-  {
-    title: 'Jenkins',
-    description: 'Learning jenkins locally is kinda hard, so i deploy it into the ☁️. (Currently inactive)',
-    href: 'https://jenkins.amyis.moe',
-    icon: SiJenkins,
-    iconForeground: 'text-red-600 dark:text-red-100',
-    iconBackground: 'bg-red-50 dark:bg-red-700',
-  },
 ]
+
+const OpenArrowIcon = (props: SVGProps<SVGSVGElement>) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+      width="1em"
+      height="1em"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path fill="currentColor" d="M5 17.59L15.59 7H9V5h10v10h-2V8.41L6.41 19L5 17.59Z"></path>
+    </svg>
+  )
+}
 
 const Home: NextPage = () => {
   return (
