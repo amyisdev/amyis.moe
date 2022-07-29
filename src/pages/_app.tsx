@@ -2,6 +2,7 @@
 import '../styles/globals.css'
 import { Layout } from '@/components/Layout'
 import type { AppRouter } from '@/server/router'
+import { httpLink } from '@trpc/client/links/httpLink'
 import { withTRPC } from '@trpc/next'
 import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from 'next-themes'
@@ -39,6 +40,12 @@ export default withTRPC<AppRouter>({
     return {
       url,
       transformer: superjson,
+      links: [
+        httpLink({
+          url: '/api/trpc',
+        }),
+      ],
+
       /**
        * @link https://react-query.tanstack.com/reference/QueryClient
        */
