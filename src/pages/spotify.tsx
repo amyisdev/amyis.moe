@@ -3,6 +3,7 @@ import { SmolContainer } from '@/components/Layout'
 import { trpc } from '@/utils/trpc'
 import clsx from 'clsx'
 import { NextPage } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import { SiSpotify } from 'react-icons/si'
 
@@ -93,49 +94,55 @@ const Spotify: NextPage = () => {
   })
 
   return (
-    <SmolContainer className="space-y-8">
-      <CardContainer>
-        <CardSection>
-          <div className="flex items-center justify-between">
-            <h1 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">My Spotify</h1>
-            <SiSpotify className="h-8 w-8 text-[#1DB954]" />
-          </div>
-        </CardSection>
+    <>
+      <Head>
+        <title>My Spotify</title>
+      </Head>
 
-        <CardSection>
-          <NowPlaying />
-        </CardSection>
-      </CardContainer>
-
-      <CardContainer>
-        <CardSection>
-          <h2 className="font-medium text-gray-900 dark:text-gray-100">Top Tracks</h2>
-        </CardSection>
-
-        {data && (
-          <CardSection className="space-y-2 divide-y divide-gray-200 dark:divide-gray-700 dark:divide-opacity-70">
-            {data.items.map((track, i) => (
-              <div key={i} className={clsx(['flex', i === 0 ? '' : 'pt-4'])}>
-                <p className="mt-0.5 text-sm font-bold text-gray-500">{i + 1}</p>
-
-                <div className="flex flex-col pl-3">
-                  <a
-                    href={track.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg font-medium text-gray-900 hover:underline dark:text-gray-100"
-                  >
-                    {track.name}
-                  </a>
-
-                  <ArtistList artists={track.artists} />
-                </div>
-              </div>
-            ))}
+      <SmolContainer className="space-y-8">
+        <CardContainer>
+          <CardSection>
+            <div className="flex items-center justify-between">
+              <h1 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">My Spotify</h1>
+              <SiSpotify className="h-8 w-8 text-[#1DB954]" />
+            </div>
           </CardSection>
-        )}
-      </CardContainer>
-    </SmolContainer>
+
+          <CardSection>
+            <NowPlaying />
+          </CardSection>
+        </CardContainer>
+
+        <CardContainer>
+          <CardSection>
+            <h2 className="font-medium text-gray-900 dark:text-gray-100">Top Tracks</h2>
+          </CardSection>
+
+          {data && (
+            <CardSection className="space-y-2 divide-y divide-gray-200 dark:divide-gray-700 dark:divide-opacity-70">
+              {data.items.map((track, i) => (
+                <div key={i} className={clsx(['flex', i === 0 ? '' : 'pt-4'])}>
+                  <p className="mt-0.5 text-sm font-bold text-gray-500">{i + 1}</p>
+
+                  <div className="flex flex-col pl-3">
+                    <a
+                      href={track.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-lg font-medium text-gray-900 hover:underline dark:text-gray-100"
+                    >
+                      {track.name}
+                    </a>
+
+                    <ArtistList artists={track.artists} />
+                  </div>
+                </div>
+              ))}
+            </CardSection>
+          )}
+        </CardContainer>
+      </SmolContainer>
+    </>
   )
 }
 

@@ -3,6 +3,7 @@ import { SmolContainer } from '@/components/Layout'
 import useBatteryMonitor from '@/utils/useBatteryMonitor'
 import { NextPage } from 'next'
 import dynamic from 'next/dynamic'
+import Head from 'next/head'
 
 const BatteryDisplay = dynamic(() => import('@/components/client/BatteryDisplay'), {
   ssr: false,
@@ -15,23 +16,29 @@ const Battery: NextPage = () => {
   const { battery } = useBatteryMonitor()
 
   return (
-    <SmolContainer className="space-y-8">
-      <CardContainer>
-        <CardSection>
-          <div className="flex items-center justify-between">
-            <h1 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">Battery Monitor</h1>
+    <>
+      <Head>
+        <title>Battery Monitor</title>
+      </Head>
 
-            {(!battery.isSupported || !battery.fetched) && <NotSupported />}
-          </div>
-        </CardSection>
+      <SmolContainer className="space-y-8">
+        <CardContainer>
+          <CardSection>
+            <div className="flex items-center justify-between">
+              <h1 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">Battery Monitor</h1>
 
-        <CardSection>
-          <BatteryDisplay battery={battery} className="mx-auto max-w-[280px] sm:max-w-xs" />
-        </CardSection>
-      </CardContainer>
+              {(!battery.isSupported || !battery.fetched) && <NotSupported />}
+            </div>
+          </CardSection>
 
-      {/* TODO: Webhook */}
-    </SmolContainer>
+          <CardSection>
+            <BatteryDisplay battery={battery} className="mx-auto max-w-[280px] sm:max-w-xs" />
+          </CardSection>
+        </CardContainer>
+
+        {/* TODO: Webhook */}
+      </SmolContainer>
+    </>
   )
 }
 

@@ -3,6 +3,7 @@ import meDark from '@/assets/me.png'
 import { CardContainer, CardSection } from '@/components/Card'
 import { SmolContainer } from '@/components/Layout'
 import { NextPage } from 'next'
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import { SiGithub, SiLinkedin, SiTwitter } from 'react-icons/si'
@@ -101,98 +102,104 @@ export const workExperiences = [
 
 const About: NextPage = () => {
   return (
-    <SmolContainer className="space-y-4">
-      <CardContainer>
-        <CardSection>
-          <h1 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">About Me</h1>
-        </CardSection>
+    <>
+      <Head>
+        <title>About Me</title>
+      </Head>
 
-        <CardSection>
-          <div className="space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8">
-            <div className="aspect-w-3 aspect-h-2 relative h-0 dark:hidden sm:aspect-w-2 sm:aspect-h-3">
-              <Image alt="Azmi Makarima" layout="fill" src={meLight} className="object-scale-down" />
-            </div>
+      <SmolContainer className="space-y-4">
+        <CardContainer>
+          <CardSection>
+            <h1 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">About Me</h1>
+          </CardSection>
 
-            <div className="aspect-w-3 aspect-h-2 relative hidden h-0 dark:block sm:aspect-w-2 sm:aspect-h-3">
-              <Image alt="Azmi Makarima" layout="fill" src={meDark} className="object-scale-down" />
-            </div>
+          <CardSection>
+            <div className="space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8">
+              <div className="aspect-w-3 aspect-h-2 relative h-0 dark:hidden sm:aspect-w-2 sm:aspect-h-3">
+                <Image alt="Azmi Makarima" layout="fill" src={meLight} className="object-scale-down" />
+              </div>
 
-            <div className="sm:col-span-2">
-              <div className="space-y-4">
-                <div className="space-y-1 text-lg font-medium leading-6">
-                  <h3 className="dark:text-white">{name}</h3>
-                  <p className="text-primary-600 dark:text-primary-500">{title}</p>
-                  <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
-                    {socials.map((social) => (
-                      <Link key={social.href} href={social.href}>
-                        <a target="_blank" rel="noopener noreferrer" className={social.className}>
-                          <social.icon className="mx-1 h-5 w-5" />
-                        </a>
-                      </Link>
-                    ))}
+              <div className="aspect-w-3 aspect-h-2 relative hidden h-0 dark:block sm:aspect-w-2 sm:aspect-h-3">
+                <Image alt="Azmi Makarima" layout="fill" src={meDark} className="object-scale-down" />
+              </div>
+
+              <div className="sm:col-span-2">
+                <div className="space-y-4">
+                  <div className="space-y-1 text-lg font-medium leading-6">
+                    <h3 className="dark:text-white">{name}</h3>
+                    <p className="text-primary-600 dark:text-primary-500">{title}</p>
+                    <div className="flex items-center space-x-2 text-gray-500 dark:text-gray-400">
+                      {socials.map((social) => (
+                        <Link key={social.href} href={social.href}>
+                          <a target="_blank" rel="noopener noreferrer" className={social.className}>
+                            <social.icon className="mx-1 h-5 w-5" />
+                          </a>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                <div className="text-gray-500 dark:text-gray-400">{bio}</div>
+                  <div className="text-gray-500 dark:text-gray-400">{bio}</div>
+                </div>
               </div>
             </div>
-          </div>
-        </CardSection>
-      </CardContainer>
+          </CardSection>
+        </CardContainer>
 
-      <CardContainer>
-        <CardSection>
-          <h2 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">Skills</h2>
-        </CardSection>
+        <CardContainer>
+          <CardSection>
+            <h2 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">Skills</h2>
+          </CardSection>
 
-        <CardSection className="space-y-4">
-          {skills.map((skill) => (
-            <div key={skill.title} className="space-y-2">
-              <h3 className="text-gray-900 dark:text-gray-100">{skill.title}</h3>
-              <div className="flex items-center space-x-2">
-                {skill.items.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-md bg-gray-100 px-2.5 py-0.5 text-sm font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300"
-                  >
-                    {item}
-                  </span>
+          <CardSection className="space-y-4">
+            {skills.map((skill) => (
+              <div key={skill.title} className="space-y-2">
+                <h3 className="text-gray-900 dark:text-gray-100">{skill.title}</h3>
+                <div className="flex items-center space-x-2">
+                  {skill.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-md bg-gray-100 px-2.5 py-0.5 text-sm font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-300"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </CardSection>
+        </CardContainer>
+
+        <CardContainer>
+          <CardSection>
+            <h2 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">Work Experience</h2>
+          </CardSection>
+
+          <CardSection className="space-y-8">
+            {workExperiences.map((experience, i) => (
+              <div key={i}>
+                <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">{experience.company}</h3>
+
+                {experience.positions.map((position, j) => (
+                  <div key={j} className={j === 0 ? 'mt-2' : 'mt-4'}>
+                    <div className="sm:flex sm:items-center sm:justify-between">
+                      <h4 className="font-semibold text-gray-700 dark:text-gray-400">{position.name}</h4>
+                      <div className="text-sm text-gray-500">{position.duration}</div>
+                    </div>
+
+                    <ul className="mt-1 ml-4 list-disc text-base text-gray-700 dark:text-gray-400">
+                      {position.description.map((item, k) => (
+                        <li key={k}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
                 ))}
               </div>
-            </div>
-          ))}
-        </CardSection>
-      </CardContainer>
-
-      <CardContainer>
-        <CardSection>
-          <h2 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">Work Experience</h2>
-        </CardSection>
-
-        <CardSection className="space-y-8">
-          {workExperiences.map((experience, i) => (
-            <div key={i}>
-              <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">{experience.company}</h3>
-
-              {experience.positions.map((position, j) => (
-                <div key={j} className={j === 0 ? 'mt-2' : 'mt-4'}>
-                  <div className="sm:flex sm:items-center sm:justify-between">
-                    <h4 className="font-semibold text-gray-700 dark:text-gray-400">{position.name}</h4>
-                    <div className="text-sm text-gray-500">{position.duration}</div>
-                  </div>
-
-                  <ul className="mt-1 ml-4 list-disc text-base text-gray-700 dark:text-gray-400">
-                    {position.description.map((item, k) => (
-                      <li key={k}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          ))}
-        </CardSection>
-      </CardContainer>
-    </SmolContainer>
+            ))}
+          </CardSection>
+        </CardContainer>
+      </SmolContainer>
+    </>
   )
 }
 

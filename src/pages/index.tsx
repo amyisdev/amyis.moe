@@ -2,6 +2,7 @@ import { CardContainer } from '@/components/Card'
 import { SmolContainer } from '@/components/Layout'
 import clsx from 'clsx'
 import type { NextPage } from 'next'
+import Head from 'next/head'
 import Link from 'next/link'
 import { SVGProps } from 'react'
 import { HiUser } from 'react-icons/hi'
@@ -53,6 +54,10 @@ const OpenArrowIcon = (props: SVGProps<SVGSVGElement>) => {
 const Home: NextPage = () => {
   return (
     <>
+      <Head>
+        <title>Amy&apos;s Lab</title>
+      </Head>
+
       <SmolContainer>
         <CardContainer>
           {services.map((service, i) => (
