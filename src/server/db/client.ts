@@ -1,5 +1,5 @@
 // src/server/db/client.ts
-import { env } from '@/server/env.mjs'
+import { env } from '@/env/server.mjs'
 import { PrismaClient } from '@prisma/client'
 
 declare global {
