@@ -14,6 +14,7 @@ function defineNextConfig(config) {
 
 export default defineNextConfig({
   reactStrictMode: true,
+  swcMinify: true,
   images: {
     domains: [
       'i.scdn.co', // spotify album image
