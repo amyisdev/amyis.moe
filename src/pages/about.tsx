@@ -115,12 +115,14 @@ const About: NextPage = () => {
 
           <CardSection>
             <div className="space-y-4 sm:grid sm:grid-cols-3 sm:gap-6 sm:space-y-0 lg:gap-8">
-              <div className="aspect-w-3 aspect-h-2 relative h-0 dark:hidden sm:aspect-w-2 sm:aspect-h-3">
-                <Image alt="Azmi Makarima" layout="fill" src={meLight} className="object-scale-down" />
-              </div>
-
-              <div className="aspect-w-3 aspect-h-2 relative hidden h-0 dark:block sm:aspect-w-2 sm:aspect-h-3">
-                <Image alt="Azmi Makarima" layout="fill" src={meDark} className="object-scale-down" />
+              <div className="aspect-w-3 aspect-h-2 relative h-0 sm:aspect-w-2 sm:aspect-h-3">
+                <Image
+                  alt="Azmi Makarima"
+                  layout="fill"
+                  placeholder="blur"
+                  src={meDark}
+                  className="object-scale-down"
+                />
               </div>
 
               <div className="sm:col-span-2">
