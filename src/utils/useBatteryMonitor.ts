@@ -53,7 +53,7 @@ const useBatteryMonitor = (options?: BatteryMonitorOptions) => {
   const [state, setState] = useLocalStorage('batt-webhook', { enabled: true, url: '' })
   const [logs, setLogs, clearLogs] = useLocalStorage<Array<{ date: string; text: string }>>('batt-webhook-logs', [])
 
-  const log = (text: string) => setLogs((logs) => logs?.concat({ date: new Date().toJSON(), text }))
+  const log = (text: string) => setLogs((vLogs) => vLogs?.concat({ date: new Date().toJSON(), text }))
 
   useInterval(
     async () => {
@@ -61,7 +61,7 @@ const useBatteryMonitor = (options?: BatteryMonitorOptions) => {
       log(result)
 
       if (logs?.length || 0 > maxLogs) {
-        setLogs((logs) => logs?.slice(1))
+        setLogs((vLogs) => vLogs?.slice(1))
       }
     },
     state?.enabled ? interval : null

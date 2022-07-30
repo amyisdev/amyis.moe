@@ -14,9 +14,9 @@ const BatteryDisplay = ({ battery, className }: Props) => {
   const battCharging = supported && battery.charging
 
   let battColor = 'bg-red-500'
-  if (battPercentage <= 20) {
+  if (battPercentage > 10) {
     battColor = 'bg-yellow-500'
-  } else {
+  } else if (battPercentage > 20) {
     battColor = 'bg-green-500'
   }
 

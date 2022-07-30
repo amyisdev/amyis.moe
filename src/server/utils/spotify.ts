@@ -26,23 +26,19 @@ export const getAccessToken = () => {
 export const getNowPlaying = async () => {
   const token = await getAccessToken()
 
-  const response = await $fetch<NowPlaying>(NOW_PLAYING_URL, {
+  return await $fetch<NowPlaying>(NOW_PLAYING_URL, {
     headers: {
       Authorization: `Bearer ${token.access_token}`,
     },
   })
-
-  return response
 }
 
 export const getTopTracks = async () => {
   const token = await getAccessToken()
 
-  const response = await $fetch<TopTracks>(TOP_TRACKS_URL, {
+  return await $fetch<TopTracks>(TOP_TRACKS_URL, {
     headers: {
       Authorization: `Bearer ${token.access_token}`,
     },
   })
-
-  return response
 }
