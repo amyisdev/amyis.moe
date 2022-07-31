@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "disabled-postinstall": "prisma generate",
+    "postinstall": "prisma generate",
     "prepare": "husky install"
   },
   "dependencies": {
