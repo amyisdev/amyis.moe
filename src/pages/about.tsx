@@ -1,4 +1,3 @@
-import meLight from '@/assets/me.jpg'
 import meDark from '@/assets/me.png'
 import { CardContainer, CardSection } from '@/components/Card'
 import { SmolContainer } from '@/components/Layout'

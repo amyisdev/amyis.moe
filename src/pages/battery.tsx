@@ -5,12 +5,11 @@ import { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 
+const NotSupported = dynamic(() => import('@/components/client/NotSupported'), { ssr: false })
 const BatteryDisplay = dynamic(() => import('@/components/client/BatteryDisplay'), {
   ssr: false,
   loading: () => <div className="flex h-28 items-center justify-center sm:h-32">Loading...</div>,
 })
-
-const NotSupported = dynamic(() => import('@/components/client/NotSupported'), { ssr: false })
 
 const Battery: NextPage = () => {
   const { battery } = useBatteryMonitor()
