@@ -1,5 +1,5 @@
-import clsx from 'clsx'
 import { HTMLProps, ReactNode } from 'react'
+import { twMerge as clsx } from 'tailwind-merge'
 
 type Props = HTMLProps<HTMLDivElement> & {
   children: ReactNode
@@ -8,10 +8,10 @@ type Props = HTMLProps<HTMLDivElement> & {
 export const CardContainer = ({ className, children }: Props) => {
   return (
     <div
-      className={clsx([
+      className={clsx(
         'divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow dark:divide-gray-700 dark:bg-gray-800',
-        className,
-      ])}
+        className
+      )}
     >
       {children}
     </div>
@@ -19,5 +19,5 @@ export const CardContainer = ({ className, children }: Props) => {
 }
 
 export const CardSection = ({ className, children }: Props) => {
-  return <div className={clsx(['px-4 py-5 sm:px-6', className])}>{children}</div>
+  return <div className={clsx('px-4 py-5 sm:px-6', className)}>{children}</div>
 }

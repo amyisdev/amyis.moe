@@ -1,7 +1,7 @@
-import clsx from 'clsx'
 import { HTMLProps } from 'react'
 import { MdBolt } from 'react-icons/md'
 import type { useBattery } from 'react-use'
+import { twMerge as clsx } from 'tailwind-merge'
 
 type Props = {
   battery: ReturnType<typeof useBattery>
@@ -21,7 +21,7 @@ const BatteryDisplay = ({ battery, className }: Props) => {
   }
 
   return (
-    <div className={clsx(['flex items-center', className])}>
+    <div className={clsx('flex items-center', className)}>
       <div className="h-28 flex-1 rounded-lg border-8 border-stone-700 bg-stone-700 sm:h-32">
         <div className="relative h-full w-full rounded-md bg-stone-600">
           <div style={{ width: `${battPercentage}%` }} className={`h-full rounded-md ${battColor}`}></div>

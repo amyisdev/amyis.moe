@@ -1,11 +1,11 @@
 import { CardContainer, CardSection } from '@/components/Card'
 import { SmolContainer } from '@/components/Layout'
 import { trpc } from '@/utils/trpc'
-import clsx from 'clsx'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { SiSpotify } from 'react-icons/si'
+import { twMerge as clsx } from 'tailwind-merge'
 
 type ArtistListProps = {
   artists: Array<{ name: string; external_urls: string }>
@@ -121,7 +121,7 @@ const Spotify: NextPage = () => {
           {data && (
             <CardSection className="space-y-2 divide-y divide-gray-200 dark:divide-gray-700 dark:divide-opacity-70">
               {data.items.map((track, i) => (
-                <div key={i} className={clsx(['flex', i === 0 ? '' : 'pt-4'])}>
+                <div key={i} className={clsx('flex', i === 0 ? '' : 'pt-4')}>
                   <p className="mt-0.5 text-sm font-bold text-gray-500">{i + 1}</p>
 
                   <div className="flex flex-col pl-3">

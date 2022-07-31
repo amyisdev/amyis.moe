@@ -1,6 +1,5 @@
 import { CardContainer } from '@/components/Card'
 import { SmolContainer } from '@/components/Layout'
-import clsx from 'clsx'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -8,6 +7,7 @@ import { SVGProps } from 'react'
 import { HiUser } from 'react-icons/hi'
 import { MdBatteryStd } from 'react-icons/md'
 import { SiSpotify } from 'react-icons/si'
+import { twMerge as clsx } from 'tailwind-merge'
 
 const services = [
   {
@@ -63,14 +63,14 @@ const Home: NextPage = () => {
           {services.map((service, i) => (
             <div
               key={service.title}
-              className={clsx([
+              className={clsx(
                 i === 0 ? 'rounded-tl-lg rounded-tr-lg ' : '',
                 i === services.length - 1 ? 'rounded-bl-lg rounded-br-lg' : '',
-                'group relative  p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-500',
-              ])}
+                'group relative  p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-primary-500'
+              )}
             >
               <div>
-                <span className={clsx(['inline-flex rounded-lg p-3', service.iconBackground, service.iconForeground])}>
+                <span className={clsx('inline-flex rounded-lg p-3', service.iconBackground, service.iconForeground)}>
                   <service.icon className="h-6 w-6" aria-hidden="true" />
                 </span>
               </div>
