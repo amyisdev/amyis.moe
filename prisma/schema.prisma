@@ -2,14 +2,34 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
-model Example {
-  id String @id @unique @default(cuid())
+model Poll {
+  id        String    @id @unique @default(cuid())
+  title     String
+  startedAt DateTime?
+  stoppedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  PollOption PollOption[]
+}
+
+model PollOption {
+  id         String @id @unique @default(cuid())
+  content    String
+  voteCounts Int    @default(0)
+
+  poll   Poll   @relation(fields: [pollId], references: [id])
+  pollId String
+
+  @@index([pollId])
 }
