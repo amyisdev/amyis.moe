@@ -1,4 +1,4 @@
-// src/pages/api/trpc/[trpc].ts
+import { prisma } from '@/server/db/client'
 import { appRouter } from '@/server/router'
 import { createContext } from '@/server/router/context'
 import { createNextApiHandler } from '@trpc/server/adapters/next'
@@ -7,7 +7,6 @@ import { createNextApiHandler } from '@trpc/server/adapters/next'
 export default createNextApiHandler({
   router: appRouter,
   createContext: createContext,
-  batching: {
-    enabled: false,
-  },
+  batching: { enabled: false },
+  teardown: () => prisma.$disconnect(),
 })
