@@ -1,18 +1,17 @@
 import { CardContainer, CardSection } from '@/components/Card'
 import { SmolContainer } from '@/components/layouts/Default'
 import { trpc } from '@/utils/trpc'
-import { Poll } from '@prisma/client'
 import { NextPage } from 'next'
 import { useSession, signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { HiPlus } from 'react-icons/hi'
 
-const PollList = ({ polls }: { polls: Poll[] }) => {
+const PollList = ({ polls }: { polls: { urlId: string; question: string }[] }) => {
   return (
     <ul className="ml-4 mt-4 list-disc">
       {polls?.map((poll) => (
-        <li key={poll.id}>
-          <Link href={`polling/${poll.id}`}>
+        <li key={poll.urlId}>
+          <Link href={`polling/${poll.urlId}`}>
             <a className="hover:underline">{poll.question}</a>
           </Link>
         </li>
@@ -49,7 +48,7 @@ const MyPolls = () => {
         </a>
       </Link>
 
-      {myPolls?.length === 0 && <p>You dont have any polls</p>}
+      {myPolls?.length === 0 && <p className="mt-4">You dont have any polls</p>}
       {!!myPolls?.length && <PollList polls={myPolls} />}
     </div>
   )

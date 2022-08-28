@@ -1,15 +1,19 @@
 import { createRouter } from './context'
-import { createPollInput } from '@/validators/polling'
+import { excludeMany } from '@/utils/helpers'
+import { createPollInput } from '@/validators/polls'
 import { TRPCError } from '@trpc/server'
+import { nanoid } from 'nanoid'
 
 const MAX_POLLS = 20
 
 export const pollsRouter = createRouter()
   .query('public-polls', {
     async resolve({ ctx }) {
-      return ctx.prisma.poll.findMany({
+      const polls = await ctx.prisma.poll.findMany({
         where: { isPublic: true },
       })
+
+      return excludeMany(polls, ['id', 'ownerEmail', 'createdAt', 'updatedAt'])
     },
   })
   .middleware(({ ctx, next }) => {
@@ -47,6 +51,7 @@ export const pollsRouter = createRouter()
       const poll = await ctx.prisma.poll.create({
         data: {
           ...input,
+          urlId: nanoid(12),
           ownerEmail: ctx.session?.user?.email || '',
           startedAt: new Date(),
           options: {

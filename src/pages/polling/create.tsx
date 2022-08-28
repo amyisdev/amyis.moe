@@ -1,7 +1,7 @@
 import { CardContainer, CardSection } from '@/components/Card'
 import { SmolContainer } from '@/components/layouts/Default'
 import { trpc } from '@/utils/trpc'
-import { createPollInput } from '@/validators/polling'
+import { createPollInput } from '@/validators/polls'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
@@ -56,7 +56,7 @@ const CreatePoll: NextPage = () => {
   const onSubmit = handleSubmit(async (data) => {
     try {
       const { poll } = await mutation.mutateAsync(data)
-      router.push(`/polling/${poll.id}`)
+      router.push(`/polling/${poll.urlId}`)
     } catch (err) {
       //
     }
