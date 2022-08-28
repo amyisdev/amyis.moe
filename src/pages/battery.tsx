@@ -1,5 +1,5 @@
 import { CardContainer, CardSection } from '@/components/Card'
-import { SmolContainer } from '@/components/Layout'
+import { SmolContainer } from '@/components/layouts/Default'
 import useBatteryMonitor from '@/utils/useBatteryMonitor'
 import { NextPage } from 'next'
 import dynamic from 'next/dynamic'
@@ -20,7 +20,7 @@ const Battery: NextPage = () => {
         <title>Battery Monitor</title>
       </Head>
 
-      <SmolContainer className="space-y-8">
+      <SmolContainer>
         <CardContainer>
           <CardSection>
             <div className="flex items-center justify-between">

@@ -1,9 +1,10 @@
 import { CardContainer } from '@/components/Card'
-import { SmolContainer } from '@/components/Layout'
+import { SmolContainer } from '@/components/layouts/Default'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { SVGProps } from 'react'
+import { FaPollH } from 'react-icons/fa'
 import { HiUser } from 'react-icons/hi'
 import { MdBatteryStd } from 'react-icons/md'
 import { SiSpotify } from 'react-icons/si'
@@ -33,6 +34,14 @@ const services = [
     icon: MdBatteryStd,
     iconForeground: 'text-emerald-600 dark:text-emerald-100',
     iconBackground: 'bg-emerald-50 dark:bg-emerald-700',
+  },
+  {
+    title: 'Polling',
+    description: 'Create polls or participate in one!',
+    href: '/polling',
+    icon: FaPollH,
+    iconForeground: 'text-blue-600 dark:text-blue-100',
+    iconBackground: 'bg-blue-50 dark:bg-blue-700',
   },
 ]
 

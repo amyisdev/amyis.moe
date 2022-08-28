@@ -1,6 +1,6 @@
 import meDark from '@/assets/me.png'
 import { CardContainer, CardSection } from '@/components/Card'
-import { SmolContainer } from '@/components/Layout'
+import { SmolContainer } from '@/components/layouts/Default'
 import { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -106,7 +106,7 @@ const About: NextPage = () => {
         <title>About Me</title>
       </Head>
 
-      <SmolContainer className="space-y-4">
+      <SmolContainer>
         <CardContainer>
           <CardSection>
             <h1 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">About Me</h1>

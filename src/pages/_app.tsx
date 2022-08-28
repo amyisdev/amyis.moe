@@ -1,22 +1,30 @@
 // src/pages/_app.tsx
 import '../styles/globals.css'
-import { Layout } from '@/components/Layout'
+import { Layout } from '@/components/layouts/Default'
 import type { AppRouter } from '@/server/router'
 import { httpLink } from '@trpc/client/links/httpLink'
 import { withTRPC } from '@trpc/next'
+import type { NextPage } from 'next'
 import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from 'next-themes'
-import type { AppType } from 'next/dist/shared/lib/utils'
+import type { AppProps } from 'next/app'
+import type { ReactElement, ReactNode } from 'react'
 import superjson from 'superjson'
 
-const MyApp: AppType = ({ Component, pageProps: { session, ...pageProps } }) => {
+export type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+const MyApp = ({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout) => {
+  const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>)
+
   return (
     <SessionProvider session={session}>
-      <ThemeProvider attribute="class">
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
+      <ThemeProvider attribute="class">{getLayout(<Component {...pageProps} />)}</ThemeProvider>
     </SessionProvider>
   )
 }
@@ -49,7 +57,7 @@ export default withTRPC<AppRouter>({
       /**
        * @link https://react-query.tanstack.com/reference/QueryClient
        */
-      // queryClientConfig: { defaultOptions: { queries: { staleTime: 60 } } },
+      queryClientConfig: { defaultOptions: { queries: { retry: false } } },
     }
   },
   /**

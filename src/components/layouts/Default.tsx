@@ -2,18 +2,16 @@ import { ArrowLeftIcon } from '@heroicons/react/solid'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { HTMLProps, ReactNode } from 'react'
+import { HTMLProps } from 'react'
 import { twMerge as clsx } from 'tailwind-merge'
 
-type Props = HTMLProps<HTMLDivElement> & {
-  children: ReactNode
-}
+type Props = HTMLProps<HTMLDivElement>
 
 export const SmolContainer = ({ children, className }: Props) => {
-  return <div className={clsx('mx-auto max-w-3xl px-4 sm:px-6 lg:px-8', className)}>{children}</div>
+  return <div className={clsx('mx-auto max-w-3xl space-y-8 px-4 sm:px-6 lg:px-8', className)}>{children}</div>
 }
 
-const ThemeToggler = dynamic(() => import('./client/ThemeToggler'), { ssr: false })
+const ThemeToggler = dynamic(() => import('../client/ThemeToggler'), { ssr: false })
 
 const Header = () => {
   return (

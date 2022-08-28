@@ -1,5 +1,5 @@
 import { CardContainer, CardSection } from '@/components/Card'
-import { SmolContainer } from '@/components/Layout'
+import { SmolContainer } from '@/components/layouts/Default'
 import { trpc } from '@/utils/trpc'
 import { NextPage } from 'next'
 import Head from 'next/head'
@@ -99,7 +99,7 @@ const Spotify: NextPage = () => {
         <title>My Spotify</title>
       </Head>
 
-      <SmolContainer className="space-y-8">
+      <SmolContainer>
         <CardContainer>
           <CardSection>
             <div className="flex items-center justify-between">
