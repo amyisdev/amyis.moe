@@ -12,7 +12,7 @@ datasource db {
 
 model Poll {
   id         Int       @id @unique @default(autoincrement())
-  urlId      String
+  urlId      String    @unique
   question   String
   ownerEmail String
   isPublic   Boolean   @default(true)

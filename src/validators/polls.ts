@@ -11,3 +11,7 @@ export const createPollInput = z.object({
     .min(2)
     .max(10),
 })
+
+export const votePollInput = z.object({
+  optionId: z.string(),
+})

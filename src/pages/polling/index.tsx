@@ -5,10 +5,13 @@ import { NextPage } from 'next'
 import { useSession, signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { HiPlus } from 'react-icons/hi'
+import { twMerge as clsx } from 'tailwind-merge'
 
-const PollList = ({ polls }: { polls: { urlId: string; question: string }[] }) => {
+type PublicPoll = { urlId: string; question: string }
+
+const PollList = ({ className, polls }: { className?: string; polls: PublicPoll[] }) => {
   return (
-    <ul className="ml-4 mt-4 list-disc">
+    <ul className={clsx('ml-4 list-disc', className)}>
       {polls?.map((poll) => (
         <li key={poll.urlId}>
           <Link href={`polling/${poll.urlId}`}>
@@ -49,7 +52,7 @@ const MyPolls = () => {
       </Link>
 
       {myPolls?.length === 0 && <p className="mt-4">You dont have any polls</p>}
-      {!!myPolls?.length && <PollList polls={myPolls} />}
+      {!!myPolls?.length && <PollList polls={myPolls} className="mt-4" />}
     </div>
   )
 }

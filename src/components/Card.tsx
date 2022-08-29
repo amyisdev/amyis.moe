@@ -1,9 +1,7 @@
 import { HTMLProps, ReactNode } from 'react'
 import { twMerge as clsx } from 'tailwind-merge'
 
-type Props = HTMLProps<HTMLDivElement> & {
-  children: ReactNode
-}
+type Props = HTMLProps<HTMLDivElement>
 
 export const CardContainer = ({ className, children }: Props) => {
   return (

@@ -71,12 +71,12 @@ const CreatePoll: NextPage = () => {
 
         <CardSection>
           {mutation.error && (
-            <div className="mb-4 rounded-md bg-red-50 p-4">
+            <div className="mb-4 rounded-md bg-red-50 p-4 text-red-800 dark:bg-red-600 dark:text-white">
               <div className="flex">
                 <div className="flex-shrink-0">
-                  <HiXCircle className="h-5 w-5 text-red-400" aria-hidden="true" />
+                  <HiXCircle className="h-5 w-5 text-red-400 dark:text-white" aria-hidden="true" />
                 </div>
-                <h3 className="ml-3 text-sm font-medium text-red-800">{mutation.error.message}</h3>
+                <h3 className="ml-3 text-sm font-medium">{mutation.error.message}</h3>
               </div>
             </div>
           )}
@@ -122,7 +122,7 @@ const CreatePoll: NextPage = () => {
 
               <button
                 type="button"
-                className="rounded-md border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm hover:brightness-105 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-500 dark:text-white"
+                className="rounded-md border border-gray-300 bg-gray-50 px-3 py-1.5 text-sm hover:brightness-105 focus:outline-none focus:ring focus:ring-primary-500 focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-500 dark:text-white"
                 onClick={() => append({ content: '' })}
               >
                 Add Option
@@ -147,7 +147,7 @@ const CreatePoll: NextPage = () => {
             <button
               type="submit"
               disabled={mutation.isLoading || mutation.isError}
-              className="mt-4 rounded-md bg-primary-500 px-4 py-2 text-sm text-white hover:brightness-105 disabled:opacity-70 disabled:hover:brightness-100 dark:bg-primary-600"
+              className="mt-4 rounded-md bg-primary-500 px-4 py-2 text-sm text-white hover:brightness-105 focus:outline-none focus:ring focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-70 disabled:hover:brightness-100 dark:bg-primary-600"
             >
               {mutation.isLoading ? 'Creating...' : 'Create'}
             </button>
