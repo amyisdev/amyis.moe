@@ -11,17 +11,16 @@ export const prisma =
     log: env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
   })
 
-if (env.NODE_ENV === 'development') {
-  // prisma middleware to show elapsed time
-  prisma.$use(async (params, next) => {
-    const before = Date.now()
-    const result = await next(params)
-    const after = Date.now()
-    console.log(`Query ${params.model}.${params.action} took ${after - before}ms`)
-
-    return result
-  })
-}
+// if (env.NODE_ENV === 'development') {
+//   // example prisma middleware to show elapsed time
+//   prisma.$use(async (params, next) => {
+//     const before = Date.now()
+//     const result = await next(params)
+//     const after = Date.now()
+//     console.log(`Query ${params.model}.${params.action} took ${after - before}ms`)
+//     return result
+//   })
+// }
 
 if (env.NODE_ENV !== 'production') {
   global.prisma = prisma
