@@ -110,7 +110,7 @@ const Poll: NextPage = () => {
               <button
                 type="submit"
                 disabled={stopMutation.isLoading}
-                className="mt-2 rounded-md bg-red-500 px-3 py-1.5 text-sm text-white hover:brightness-105 focus:outline-none focus:ring focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-70 disabled:hover:brightness-100 dark:bg-primary-600"
+                className="mt-2 rounded-md bg-red-500 px-3 py-1.5 text-sm text-white hover:brightness-105 focus:outline-none focus:ring focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-70 disabled:hover:brightness-100 dark:bg-red-600"
                 onClick={onStopPoll}
               >
                 {stopMutation.isLoading ? 'Ending poll...' : 'End poll'}
