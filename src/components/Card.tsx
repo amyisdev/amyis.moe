@@ -1,4 +1,4 @@
-import { HTMLProps, ReactNode } from 'react'
+import { HTMLProps } from 'react'
 import { twMerge as clsx } from 'tailwind-merge'
 
 type Props = HTMLProps<HTMLDivElement>
