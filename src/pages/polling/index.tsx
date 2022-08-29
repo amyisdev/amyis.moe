@@ -1,13 +1,14 @@
 import { CardContainer, CardSection } from '@/components/Card'
 import { SmolContainer } from '@/components/layouts/Default'
 import { trpc } from '@/utils/trpc'
+import { Poll } from '@prisma/client'
 import { NextPage } from 'next'
 import { useSession, signIn } from 'next-auth/react'
 import Link from 'next/link'
 import { HiPlus } from 'react-icons/hi'
 import { twMerge as clsx } from 'tailwind-merge'
 
-type PublicPoll = { urlId: string; question: string }
+type PublicPoll = Omit<Poll, 'ownerEmail' | 'createdAt' | 'updatedAt' | 'id'>
 
 const PollList = ({ className, polls }: { className?: string; polls: PublicPoll[] }) => {
   return (
@@ -15,7 +16,10 @@ const PollList = ({ className, polls }: { className?: string; polls: PublicPoll[
       {polls?.map((poll) => (
         <li key={poll.urlId}>
           <Link href={`polling/${poll.urlId}`}>
-            <a className="hover:underline">{poll.question}</a>
+            <a className="hover:underline">
+              {poll.stoppedAt && `(Ended) `}
+              {poll.question}
+            </a>
           </Link>
         </li>
       ))}

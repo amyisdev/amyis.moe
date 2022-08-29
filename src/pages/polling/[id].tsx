@@ -22,20 +22,33 @@ const Poll: NextPage = () => {
   })
 
   const mutation = trpc.useMutation(['polls.vote-poll'])
+  const stopMutation = trpc.useMutation(['polls.stop-poll'])
 
   const { register, handleSubmit } = useForm<z.infer<typeof votePollInput>>({
     resolver: zodResolver(votePollInput),
   })
 
+  const showResult = viewResult || !!data?.poll.stoppedAt
+  const hasVoted = !!data?.userVote || !!data?.poll.stoppedAt
+
   const onSubmit = handleSubmit(async (data) => {
     try {
       await mutation.mutateAsync(data)
-      refetch()
+      await refetch()
       setViewResult(true)
     } catch (err) {
       //
     }
   })
+
+  const onStopPoll = async () => {
+    try {
+      await stopMutation.mutateAsync({ id })
+      await refetch()
+    } catch (err) {
+      //
+    }
+  }
 
   if (error) {
     return (
@@ -84,10 +97,30 @@ const Poll: NextPage = () => {
           <CardSection>
             <p className="font-medium text-gray-900 dark:text-gray-100">Control Panel</p>
           </CardSection>
+          <CardSection>
+            <p className="text-gray-700 dark:text-gray-400">
+              Started at: {data.poll.startedAt?.toISOString() || 'N/A'}
+              <br />
+              Ended at: {data.poll.stoppedAt?.toISOString() || 'N/A'}
+              <br />
+              Total votes: {data.poll._count.votes}
+            </p>
+
+            {!data.poll.stoppedAt && (
+              <button
+                type="submit"
+                disabled={stopMutation.isLoading}
+                className="mt-2 rounded-md bg-red-500 px-3 py-1.5 text-sm text-white hover:brightness-105 focus:outline-none focus:ring focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-70 disabled:hover:brightness-100 dark:bg-primary-600"
+                onClick={onStopPoll}
+              >
+                {stopMutation.isLoading ? 'Ending poll...' : 'End poll'}
+              </button>
+            )}
+          </CardSection>
         </CardContainer>
       )}
 
-      {!viewResult && (
+      {!showResult && (
         <CardContainer>
           <CardSection>
             <form onSubmit={onSubmit}>
@@ -138,7 +171,7 @@ const Poll: NextPage = () => {
         </CardContainer>
       )}
 
-      {viewResult && (
+      {showResult && (
         <CardContainer>
           <CardSection>
             <h1 className="font-medium text-gray-900 dark:text-gray-100">{data.poll.question}</h1>
@@ -168,7 +201,7 @@ const Poll: NextPage = () => {
               </div>
             </fieldset>
 
-            {!data.userVote && (
+            {!hasVoted && (
               <div className="mt-4 flex items-center space-x-2">
                 <button
                   type="button"

@@ -38,8 +38,11 @@ export const pollsRouter = createRouter()
       const poll = await ctx.prisma.poll.findFirst({
         where: { urlId: input.id },
         include: {
+          _count: {
+            select: { votes: true },
+          },
           options: {
-            select: { _count: true, id: true, content: true },
+            include: { _count: true },
             orderBy: { id: 'asc' },
           },
         },
@@ -80,6 +83,10 @@ export const pollsRouter = createRouter()
         throw new TRPCError({ code: 'NOT_FOUND', message: 'Invalid option' })
       }
 
+      if (option.poll.stoppedAt) {
+        throw new TRPCError({ code: 'BAD_REQUEST', message: 'This poll has been closed' })
+      }
+
       const userVoted = await ctx.prisma.pollVote.count({
         where: { voterId, pollId: option.pollId },
       })
@@ -102,6 +109,24 @@ export const pollsRouter = createRouter()
     }
 
     return next()
+  })
+
+  .mutation('stop-poll', {
+    input: z.object({ id: z.string() }),
+    async resolve({ ctx, input }) {
+      const poll = await ctx.prisma.poll.findFirst({
+        where: { urlId: input.id, ownerEmail: ctx.session?.user?.email || '' },
+      })
+
+      if (!poll) {
+        throw new TRPCError({ code: 'NOT_FOUND', message: 'Poll not found' })
+      }
+
+      await ctx.prisma.poll.update({
+        where: { id: poll.id },
+        data: { stoppedAt: new Date() },
+      })
+    },
   })
 
   .query('my-polls', {
